@@ -27,6 +27,7 @@ produtos.forEach(produto => {
     
     input.setAttribute("id", `produto-${produto.itemId}`);
     input.setAttribute("type", "number");
+    input.setAttribute("max", produto.qtdItem)
     input.setAttribute("value", produto.qtdItem)
     
     // adiciona os campos à pagina html

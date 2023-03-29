@@ -1,6 +1,10 @@
 import { verificaCidade } from "../functions/verificaCidade.js";
 import { verificaDistancia } from "../functions/verificaDistancia.js";
 import { calculaFrete } from "../functions/calculaFrete.js";
+import {
+  calculaTransporte,
+  salvaTransporte,
+} from "../functions/salvaTransporte.js";
 
 // botão de cálculo de frete entre 2 cidades
 let send = document.querySelector(".btn-calcula");
@@ -47,6 +51,9 @@ send.addEventListener("click", (e) => {
   const cidades = [saida, destino];
   const cidadesJSON = JSON.stringify(cidades);
   localStorage.setItem("cidades", cidadesJSON);
+
+  // salva o transporte nos arquivos locais do navegador
+  salvaTransporte(calculaTransporte(saida, destino, produtos, distancia));
 });
 
 // botão de adicionar parada
@@ -87,6 +94,6 @@ btnParada.addEventListener("click", (e) => {
   const cidades = [saida, destino];
   const cidadesJSON = JSON.stringify(cidades);
   localStorage.setItem("cidades", cidadesJSON);
-  
+
   document.location.href = `./parada.html`;
 });

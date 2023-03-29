@@ -1,6 +1,11 @@
 import { verificaDistancia } from "../functions/verificaDistancia.js";
 import { calculaFrete } from "../functions/calculaFrete.js";
 import { verificaCidade } from "../functions/verificaCidade.js";
+import {
+  calculaTransporte,
+  salvaTransporte,
+} from "../functions/salvaTransporte.js";
+import { calculaPeso } from "../functions/verificaTransporte.js";
 
 // botão de envio do formulário
 const btn = document.querySelector(".btn");
@@ -40,9 +45,10 @@ btn.addEventListener("click", (e) => {
   if (!parada) {
     result.innerHTML = "A cidade de parada não está disponível";
   } else {
-    
     // insere o relatório entre a saída e a parada no array de relatórios
     relatorios.push(calculaFrete(saida, parada, produtos, distancia));
+
+    let trecho1 = calculaTransporte(saida, parada, produtos, distancia);
 
     // atualiza a quantidade de cada item que irá seguir até o destino final
     produtos.forEach((produto) => {
@@ -51,11 +57,20 @@ btn.addEventListener("click", (e) => {
       ).value;
     });
 
+    // atualiza o peso total de cada tipo de produto
+    produtos.forEach((produto) => {
+      produto.pesoTotal = calculaPeso(produto.itemId, produto.qtdItem);
+    });
+
     // calcula a distância entre a parada e o destino final
     distancia = verificaDistancia(parada, destino);
 
     // insere o relatório entre a parada e o destino final no array de relatórios
     relatorios.push(calculaFrete(parada, destino, produtos, distancia));
+
+    let trecho2 = calculaTransporte(parada, destino, produtos, distancia);
+
+    salvaTransporte(trecho1, trecho2);
 
     // exibe os relatórios no html
     relatorios.forEach((relatorio) => {

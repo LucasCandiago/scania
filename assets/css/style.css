@@ -110,3 +110,11 @@ select {
 .links-menu:hover {
   text-decoration: underline;
 }
+
+.trechos {
+  border-bottom: 1px solid #000;
+}
+
+.transporte {
+  border-bottom: 1px solid #000;
+}

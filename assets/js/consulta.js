@@ -40,7 +40,7 @@ send.addEventListener("click", (e) => {
   }
 
   // cálculo do preço
-  let valor = verificaPrecoTransporte(transporteId, distancia);
+  let valor = formatarReal(verificaPrecoTransporte(transporteId, distancia));
 
   // relatório final exibido ao usuário
   result.innerHTML = `De ${saida.nome} para ${destino.nome}, utilizando um ${transporte}, a distância é de ${distancia}km e o custo será de ${valor}.

@@ -14,9 +14,6 @@ export function verificaPrecoTransporte(id, distancia, qtd = 1) {
   let precoKm = transporte.preco * qtd;
   let preco = precoKm * distancia;
 
-  // formatação do preço para o padrão de moeda brasileiro
-  preco = preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-
   return preco;
 }
 

@@ -2,6 +2,7 @@ import { verificaCidade } from "../functions/verificaCidade.js";
 import { verificaDistancia } from "../functions/verificaDistancia.js";
 import { verificaTransporte } from "../functions/verificaTransporte.js";
 import { verificaPrecoTransporte } from "../functions/verificaTransporte.js";
+import { formatarReal } from "../functions/formatarReal.js";
 
 // código JavaScript da página de consulta de um frete, determinando a distância e o tipo de caminhão
 

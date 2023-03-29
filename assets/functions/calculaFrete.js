@@ -16,7 +16,7 @@ export function calculaFrete(saida, destino, produtos, distancia) {
   // contagem dos produtos, junto à contagem do peso, e formulação da frase que contém os itens que vão ser enviados
   produtos.forEach((item) => {
     let produto = itens.find((p) => p.id == item.itemId);
-    totProdutos += item.qtdItem;
+    totProdutos += parseInt(item.qtdItem);
     itensFrase += `${item.qtdItem} ${produto.nome}, `;
     pesoTotalKG += item.pesoTotal;
   });
